@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<body>
+<textarea id="zoomblob" cols=80 rows=5 placeholder="Paste zoom invitation here">
+</textarea>
+<script type="text/javascript">
+function sweep(value) {
+	var re = /.*?(https\:\/\/iu\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*/s;
+	if (value == null) {
+		return value;
+	}
+	return value.replace(re, "$1\n\n$3; $2#");
+}
+$(document).ready(function() {
+  $('#zoomblob').bind('paste', function(e) {
+  	var value = e.originalEvent.clipboardData.getData('text');
+  	value = sweep(value);
+  	setTimeout(
+  		function() {
+  			$('#zoomblob').val(value);
+  			$('#zoomblob').select();
+  		}, 1
+  	);
+  });
+  $('#zoomblob').focus();
+});
+</script>
+</body>
+</html>
