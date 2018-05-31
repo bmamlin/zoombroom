@@ -3,11 +3,14 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <body>
+<p>
+Use the Zoom Broom to sweep away the lard from your Zoom invites.
+</p>
 <textarea id="zoomblob" cols=80 rows=5 placeholder="Paste zoom invitation here">
 </textarea>
 <script type="text/javascript">
 function sweep(value) {
-	var re = /.*?(https\:\/\/iu\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*/s;
+	var re = /.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*/s;
 	if (value == null) {
 		return value;
 	}
