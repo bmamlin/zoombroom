@@ -15,13 +15,19 @@ Use the Zoom Broom to sweep away the lard from your Zoom invites. Zoom Broom is 
 <script type="text/javascript">
 function sweep(value) {
   msg('');
-  var re = /.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*/s;
+  var re = /.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*|.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?One tap mobile \(US\)\:\s+([0-9\+,#\s]+).*?/s;
   if (value == null) {
     return '';
   }
   if (re.test(value)) {
     msg('Zoom invite swept and already in your clipboard! Paste where needed.');
-    return value.replace(re, "$1\n\n$3; $2#");
+    var response;
+    if ($1) {
+      response = value.replace(re, "$1\n\n$3,$2#");
+    } else {
+      response = value.replace(re, "$4\n\n$6");
+    }
+    return response;
   }
   msg('Pasted text does not appear to be a Zoom inivation. Please try again.');
   return value;
