@@ -19,10 +19,11 @@ function sweep(value) {
   if (value == null) {
     return '';
   }
-  if (re.test(value)) {
+  var match = value.match(re);
+  if (match) {
     msg('Zoom invite swept and already in your clipboard! Paste where needed.');
     var response;
-    if ($1) {
+    if (match[1]) {
       response = value.replace(re, "$1\n\n$3,$2#");
     } else {
       response = value.replace(re, "$4\n\n$6");
