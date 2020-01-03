@@ -15,7 +15,7 @@ Use the Zoom Broom to sweep away the lard from your Zoom invites. Zoom Broom is 
 <script type="text/javascript">
 function sweep(value) {
   msg('');
-  var re = /.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*|.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?One tap mobile \(US\)\:\s+([0-9\+,#\s]+).*?/s;
+  var re = /.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?Dial\:\s+([0-9\+\s]+?)\s\(.*|.*?(https\:\/\/[^\.]+\.zoom\.us\/j\/(\d+)).*?One tap mobile \(US\)\:\s+([0-9\+,#\s]+).*/s;
   if (value == null) {
     return '';
   }
